@@ -36,14 +36,14 @@
     path: '{{ DISTR_FOLDER }}\DISTR_INSTALLER_x64'
     product_id: '{{ PRODUCT_CODE_x64 }}'
     arguments: ''
-  when: ansible_architecture2 == "x86_64"
+  when: ansible_architecture == "64-bit"
 
 - name: Install Zabbix Agent x86
   win_package:
     path: '{{ DISTR_FOLDER }}\DISTR_INSTALLER_x86'
     product_id: '{{ PRODUCT_CODE_x86 }}'
     arguments: ''
-  when: ansible_architecture2 == "x86"
+  when: ansible_architecture == "32-bit"
 
 - name: Copy config
   win_copy:
