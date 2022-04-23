@@ -1,2 +1,6 @@
 ---
-# handlers file for deploy_1c_server
+# handlers file for deploy_zabbix_agent
+- name: Restart Zabbix Agent Service
+  win_service:
+    name: '{{ SERVICE_NAME }}'
+    state: restarted
