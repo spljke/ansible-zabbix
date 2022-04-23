@@ -4,15 +4,23 @@
 - name: Test connection
   win_ping: 
 
-- name: Stop service
+- name: Check if a service is installed
   win_service:
     name: '{{ SERVICE_NAME }}'
-    state: stopped
+  register: SERVICE_NAME_INFO
 
-- name: Remove agent service
-  win_service:
-    name: '{{ SERVICE_NAME }}'
-    state: absent
+- block:
+  - name: Stop service
+    win_service:
+      name: '{{ SERVICE_NAME }}'
+      state: stopped
+  
+  - name: Remove agent service
+    win_service:
+      name: '{{ SERVICE_NAME }}'
+      state: absent
+
+when: SERVICE_NAME_INFO.exists
   
 - name: Remove Dirs
   win_file: 
