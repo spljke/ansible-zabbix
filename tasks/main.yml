@@ -20,7 +20,7 @@
       name: '{{ SERVICE_NAME }}'
       state: absent
 
-when: SERVICE_NAME_INFO.exists
+  when: SERVICE_NAME_INFO.exists
   
 - name: Remove Dirs
   win_file: 
