@@ -18,10 +18,10 @@
   win_file: 
     path: '{{ item }}'
     state: absent
-    loop:
-      - 'C:/Zabbix'
-      - 'C:/Program Files/Zabbix'
-      - 'C:/Program Files (x86)/Zabbix'
+  loop:
+    - 'C:/Zabbix'
+    - 'C:/Program Files/Zabbix'
+    - 'C:/Program Files (x86)/Zabbix'
 
 - name: Install Zabbix Agent x64
   win_package:
