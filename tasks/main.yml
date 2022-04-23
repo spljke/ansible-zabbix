@@ -1,0 +1,53 @@
+---
+# tasks file for deploy_zabbix_agent
+
+- name: Test connection
+  win_ping: 
+
+- name: Stop service
+  win_service:
+    name: '{{ SERVICE_NAME }}'
+    state: stopped
+
+- name: Remove agent service
+  win_service:
+    name: '{{ SERVICE_NAME }}'
+    state: absent
+  
+- name: Remove Dirs
+  win_file: 
+    path: {{ item }} 
+    state: absent
+    loop:
+      - 'C:/Zabbix'
+      - 'C:/Program Files/Zabbix'
+      - 'C:/Program Files (x86)/Zabbix'
+
+- name: Install Zabbix Agent x64
+  win_package:
+    path: '{{ DISTR_FOLDER }}\DISTR_INSTALLER_x64'
+    product_id: {{ PRODUCT_CODE_x64 }}
+    arguments: ''
+  when: ansible_architecture2 == "x86_64"
+
+- name: Install Zabbix Agent x86
+  win_package:
+    path: '{{ DISTR_FOLDER }}\DISTR_INSTALLER_x86'
+    product_id: {{ PRODUCT_CODE_x86 }}
+    arguments: ''
+  when: ansible_architecture2 == "x86"
+
+- name: Copy config
+    win_copy:
+      src: zabbix_agentd.conf
+      dest: '%ProgramFiles%/Zabbix Agent/zabbix_agentd.conf'
+
+- name: Start service
+  win_service:
+    name: '{{ SERVICE_NAME }}'
+    state: started
+
+
+
+
+

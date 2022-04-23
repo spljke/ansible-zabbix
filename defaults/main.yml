@@ -1,0 +1,10 @@
+---
+SERVICE_NAME : 'Zabbix Agent'
+SERVER_ADDR  : zbx.corp.contoso.com
+DISTR_FOLDER   : \\corp.contoso.com\infra\lib\Distrs\Zabbix
+DISTR_INSTALLER_x86  : zabbix_agent-6.0.3_x86.msi
+DISTR_INSTALLER_x64  : zabbix_agent-6.0.3_x64.msi
+PRODUCT_CODE_x86     : {B430A97D-9CBC-4BF6-9C8F-327958BAFCA9}
+PRODUCT_CODE_x64     : {9B642B5B-5D44-4221-B332-A6B81FA062B4}
+
+TARGET_VERSION : 6.0.3
