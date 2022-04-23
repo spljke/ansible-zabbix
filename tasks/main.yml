@@ -33,14 +33,14 @@
 
 - name: Install Zabbix Agent x64
   win_package:
-    path: '{{ DISTR_FOLDER }}\DISTR_INSTALLER_x64'
+    path: '{{ DISTR_FOLDER }}\{{ DISTR_INSTALLER_x64 }}'
     product_id: '{{ PRODUCT_CODE_x64 }}'
     arguments: ''
   when: ansible_architecture == "64-bit"
 
 - name: Install Zabbix Agent x86
   win_package:
-    path: '{{ DISTR_FOLDER }}\DISTR_INSTALLER_x86'
+    path: '{{ DISTR_FOLDER }}\{{ DISTR_INSTALLER_x86 }}'
     product_id: '{{ PRODUCT_CODE_x86 }}'
     arguments: ''
   when: ansible_architecture == "32-bit"
