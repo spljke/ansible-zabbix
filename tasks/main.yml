@@ -38,9 +38,9 @@
   when: ansible_architecture2 == "x86"
 
 - name: Copy config
-    win_copy:
-      src: zabbix_agentd.conf
-      dest: '%ProgramFiles%/Zabbix Agent/zabbix_agentd.conf'
+  win_copy:
+    src: zabbix_agentd.conf
+    dest: '%ProgramFiles%/Zabbix Agent/zabbix_agentd.conf'
 
 - name: Start service
   win_service:
