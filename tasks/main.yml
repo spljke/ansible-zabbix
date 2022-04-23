@@ -16,7 +16,7 @@
   
 - name: Remove Dirs
   win_file: 
-    path: {{ item }} 
+    path: '{{ item }}'
     state: absent
     loop:
       - 'C:/Zabbix'
