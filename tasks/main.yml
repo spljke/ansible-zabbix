@@ -19,7 +19,7 @@
   register: SERVICE_INFO
 
 
-- debug: var=SERVICE_NAME_INFO
+- debug: var=SERVICE_INFO
 
 - block:
   - name: Stop service
