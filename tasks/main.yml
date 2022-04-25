@@ -14,7 +14,7 @@
 - debug: var=md5_checksum
 
 - name: Check if a service is installed
-  win_service_info:
+  ansible.windows.win_service_info:
     name: '{{ SERVICE_NAME }}'
   register: SERVICE_INFO
 
