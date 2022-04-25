@@ -4,6 +4,13 @@
 - name: Test connection
   win_ping: 
 
+- name: Check if already installed
+  win_stat:
+    path: '%ProgramFiles%/Zabbix Agent/zabbix_agentd.exe'
+    get_checksum: yes
+    checksum_algorithm: md5
+  register: md5_checksum
+
 - name: Check if a service is installed
   win_service:
     name: '{{ SERVICE_NAME }}'
@@ -20,7 +27,9 @@
       name: '{{ SERVICE_NAME }}'
       state: absent
 
-  when: SERVICE_NAME_INFO.exists
+  when: 
+    - SERVICE_NAME_INFO.exists
+  #  - md5_checksum == 
   
 - name: Remove Dirs
   win_file: 
