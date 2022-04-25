@@ -11,6 +11,8 @@
     checksum_algorithm: md5
   register: md5_checksum
 
+- debug: var=md5_checksum
+
 - name: Check if a service is installed
   win_service:
     name: '{{ SERVICE_NAME }}'
