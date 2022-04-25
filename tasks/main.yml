@@ -14,9 +14,10 @@
 - debug: var=md5_checksum
 
 - name: Check if a service is installed
-  win_service:
+  win_service_info:
     name: '{{ SERVICE_NAME }}'
-  register: SERVICE_NAME_INFO
+  register: SERVICE_INFO
+
 
 - debug: var=SERVICE_NAME_INFO
 
@@ -32,7 +33,7 @@
       state: absent
 
   when: 
-    - SERVICE_NAME_INFO.exists
+    - SERVICE_INFO.exists
     - md5_checksum.stat.checksum != '{{ AGENTD_CHECKSUM_x64 }}'
   
 - name: Remove Dirs
