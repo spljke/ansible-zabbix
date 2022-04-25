@@ -33,7 +33,7 @@
 
   when: 
     - SERVICE_NAME_INFO.exists
-    - md5_checksum.stat.checksum == c42721992d061f64121f038498ff714e
+    - md5_checksum.stat.checksum == 'c42721992d061f64121f038498ff714e'
   
 - name: Remove Dirs
   win_file: 
